@@ -442,7 +442,6 @@ public class TokenFragment extends Fragment
             if (pendingTokenRequest != null)
             {
                 pendingTokenRequest.cancel();
-                pendingTokenRequest = null;
             }
             SaveDeclinedSignInPreference(true);
         }
@@ -453,8 +452,8 @@ public class TokenFragment extends Fragment
             pendingTokenRequest = null;
         }
         if (request != null) {
-            SaveDeclinedSignInPreference(false);
             if (acct != null) {
+                SaveDeclinedSignInPreference(false);
                 request.setAuthCode(acct.getServerAuthCode());
                 request.setEmail(acct.getEmail());
                 request.setIdToken(acct.getIdToken());
