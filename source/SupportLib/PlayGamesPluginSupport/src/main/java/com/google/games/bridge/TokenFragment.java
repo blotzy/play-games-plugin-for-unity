@@ -315,7 +315,9 @@ public class TokenFragment extends Fragment
                 );
             } else {
                 Log.d(TAG,"No connected Games API");
-                onSignedIn(CommonStatusCodes.ERROR, null);
+                synchronized (lock) {
+                    pendingTokenRequest = null;
+                }
             }
         }
 
