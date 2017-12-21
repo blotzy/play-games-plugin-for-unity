@@ -553,14 +553,7 @@ public class TokenFragment extends Fragment
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.e(TAG,"onConnectionFailed: " + connectionResult.getErrorCode() +
                ": " + connectionResult.getErrorMessage());
-        if (connectionResult.hasResolution()) {
-            // Just start the intent, it will be easier.
-            Intent signInIntent = Auth.GoogleSignInApi
-                    .getSignInIntent(mGoogleApiClient);
-            startActivityForResult(signInIntent, RC_ACCT);
-        } else {
-            onSignedIn(connectionResult.getErrorCode(), null);
-        }
+        onSignedIn(connectionResult.getErrorCode(), null);
     }
 
     /**
